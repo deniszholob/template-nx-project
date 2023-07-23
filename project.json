@@ -106,6 +106,47 @@
       "options": {
         "buildTarget": "template-nx-project:build"
       }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "./.storybook",
+        "browserTarget": "template-nx-project:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/template-nx-project",
+        "configDir": "./.storybook",
+        "browserTarget": "template-nx-project:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "template-nx-project:build-storybook",
+        "staticFilePath": "dist/storybook/template-nx-project"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "template-nx-project:build-storybook:ci"
+        }
+      }
     }
   }
 }
