@@ -1,14 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { APP_MODIFIED_DATE } from './app.modified';
 
 @Component({
-  standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
-  selector: 'template-nx-project-root',
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [CommonModule, RouterModule],
 })
 export class AppComponent {
-  title = 'template-nx-project';
+  public readonly APP_MODIFIED_DATE: number = APP_MODIFIED_DATE;
 }

@@ -1,2 +1,11 @@
-<template-nx-project-nx-welcome></template-nx-project-nx-welcome>
-<router-outlet></router-outlet>
+<header>
+  <h1>template_nx_project_name</h1>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer>
+  <div class="">Updated {{ APP_MODIFIED_DATE | date : 'y/M/d' }}</div>
+</footer>

@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "defaultProject": "template-nx-project",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
@@ -53,6 +54,5 @@
     "@nx/angular:component": {
       "style": "scss"
     }
-  },
-  "defaultProject": "template-nx-project"
+  }
 }

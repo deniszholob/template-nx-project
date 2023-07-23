@@ -2,7 +2,7 @@
   "name": "template-nx-project",
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "template-nx-project",
+  "prefix": "app",
   "sourceRoot": "./src",
   "tags": [],
   "targets": {
@@ -10,13 +10,29 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/template-nx-project",
+        "outputPath": "public",
         "index": "./src/index.html",
         "main": "./src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "./tsconfig.app.json",
-        "assets": ["./src/favicon.ico", "./src/assets"],
-        "styles": ["./src/styles.scss"],
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "./global/assets",
+            "output": "./assets"
+          },
+          {
+            "glob": "**/*",
+            "input": "./src/meta",
+            "output": "./"
+          },
+          {
+            "glob": "**/*",
+            "input": "./src/icons",
+            "output": "./"
+          }
+        ],
+        "styles": ["./global/styles/styles.scss"],
         "scripts": []
       },
       "configurations": {
