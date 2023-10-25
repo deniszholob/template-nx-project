@@ -4,6 +4,7 @@ import {
   withEnabledBlockingInitialNavigation,
   withRouterConfig,
 } from '@angular/router';
+
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {

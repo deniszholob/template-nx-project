@@ -1,5 +1,7 @@
 {
   "angular-files-generator.customTemplateFolder": ".vscode/ngfg-templates",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionsOnSave": {"source.fixAll.eslint": true},
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.renderWhitespace": "all",
   "editor.rulers": [80, 100],
@@ -30,6 +32,9 @@
     "models.ts": "url",
     "services.ts": "url"
   },
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
   "files.exclude": {
     "**/.angular": true,
     "**/.babelrc": true,

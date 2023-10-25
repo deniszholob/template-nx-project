@@ -1,3 +1,6 @@
+/* eslint-env es6 */
+// @ts-check
+
 const fs = require('fs');
 
 function main() {
@@ -10,13 +13,13 @@ function renderFile(filePath, updateDate) {
   const contents = fillTemplate(updateDate);
   fs.writeFile(filePath, contents, (err) => {
     if (err) {
-      console.error('Error occurred:', error);
+      console.error('Error occurred:', err);
     }
-    const msg = `Modify Date updated to ${formatDate(updateDate)} (${updateDate})`;
+    const formattedDate = `${formatDate(updateDate)} (${updateDate})`;
+    const msg = `Modify Date updated to ${formattedDate}`;
     console.log(msg);
   });
 }
-
 
 function fillTemplate(dateNumber) {
   return `// === Auto Generated during deployment build === //

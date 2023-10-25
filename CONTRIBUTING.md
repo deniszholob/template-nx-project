@@ -20,7 +20,7 @@ There is a [recommended extension](.vscode/extensions.json) `adrianwilczynski.to
 
 You can reference any of the existing components in the storybook instance
 
-- Active storybook via `npm run storybook` command
+- Run storybook via `npm run storybook` command
 - You can then browse the list of components and use the docs to help you use them
 
 ## Steps to follow when your work is ready:

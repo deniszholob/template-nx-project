@@ -7,7 +7,7 @@
 echo ' -- Build Script Started ...'
 
 echo ' -- Running npm build script'
-npm run build:prod
+npm run build:gh-prod
 
 # https://angular.io/guide/deployment#deploy-to-github-pages
 echo ' -- Copy index.html to 404.html'

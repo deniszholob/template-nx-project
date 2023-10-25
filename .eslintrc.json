@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["!**/*"],
-  "plugins": ["@nx"],
+  "plugins": ["@nx", "unused-imports", "simple-import-sort"],
   "overrides": [
     {
       "files": ["*.ts"],
@@ -27,16 +27,52 @@
             "style": "kebab-case"
           }
         ],
-        "@typescript-eslint/explicit-member-accessibility": "error",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "overrides": { "constructors": "no-public" }
+          }
+        ],
         "@typescript-eslint/no-inferrable-types": "off",
         "max-len": "off",
-        "eqeqeq": ["error", "smart"]
+        "eqeqeq": ["error", "smart"],
+        "no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": "warn",
+        "simple-import-sort/imports": "error"
       }
     },
     {
       "files": ["*.html"],
       "extends": ["plugin:@nx/angular-template"],
-      "rules": {}
+      "rules": {
+        "@angular-eslint/template/eqeqeq": [
+          "error",
+          { "allowNullOrUndefined": true }
+        ]
+      }
+    },
+    {
+      "files": ["*.stories.ts"],
+      "extends": ["plugin:@nx/angular-template"],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "sb",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "sb",
+            "style": "kebab-case"
+          }
+        ]
+      }
     }
   ]
 }
