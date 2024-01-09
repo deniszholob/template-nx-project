@@ -1,7 +1,13 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { importProvidersFrom } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 import {
   AngularRenderer,
+  applicationConfig,
   componentWrapperDecorator,
   Parameters,
+  Preview,
 } from '@storybook/angular';
 import { themes } from '@storybook/theming';
 import { DecoratorFunction } from '@storybook/types';
@@ -15,6 +21,7 @@ export const parameters: Parameters = {
     // docs: { inlineStories: true, source: { state: 'open' } },
     // source: { type: 'code' }, // forces the raw source code (rather than the rendered JSX).
     toc: true,
+    // Sync this with the config theme manager.ts
     theme: themes.dark,
   },
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -29,21 +36,44 @@ export const parameters: Parameters = {
   // backgrounds: { default: 'dark' },
 };
 
-const DECORATOR_NGXS_CLEAR_STORE: DecoratorFunction<AngularRenderer, string> =
-  componentWrapperDecorator((story: string): string => {
+type SbDecoratorFn = DecoratorFunction<
+  AngularRenderer,
+  Partial<{ [x: string]: any }>
+>;
+
+// https://github.com/storybookjs/storybook/issues/21942#issuecomment-1516177565
+const DECORATOR_PROVIDERS: SbDecoratorFn = applicationConfig({
+  providers: [
+    importProvidersFrom(
+      BrowserAnimationsModule,
+      HttpClientTestingModule,
+      RouterTestingModule
+    ),
+  ],
+});
+
+const DECORATOR_NGXS_CLEAR_STORE: SbDecoratorFn = componentWrapperDecorator(
+  (story: string): string => {
     window.localStorage.removeItem('@@STATE');
     return story;
-  });
+  }
+);
 
-const DECORATOR_APP_WRAPPER = (storyFunc: any) => {
-  const story = storyFunc();
-  return {
-    ...story,
-    template: `<div class="site">${story.template}</div>`,
-  };
-};
+// const DECORATOR_APP_WRAPPER: SbDecoratorFn = (storyFunc: any) => {
+//   const story = storyFunc();
+//   return {
+//     ...story,
+//     template: `<div class="site">${story.template}</div>`,
+//   };
+// };
 
-export const decorators: DecoratorFunction<AngularRenderer, string>[] = [
+export const decorators: SbDecoratorFn[] = [
+  DECORATOR_PROVIDERS,
   DECORATOR_NGXS_CLEAR_STORE,
   // DECORATOR_APP_WRAPPER,
 ];
+
+export default {
+  parameters,
+  decorators,
+} satisfies Preview;

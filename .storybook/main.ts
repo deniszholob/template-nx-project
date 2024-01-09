@@ -3,7 +3,10 @@ import type { StorybookConfig } from '@storybook/angular';
 const storyFiles = '*.stories.@(js|jsx|ts|tsx|mdx)';
 const config: StorybookConfig = {
   stories: [`./**/${storyFiles}`, `../src/app/**/${storyFiles}`],
-  addons: ['@storybook/addon-essentials'],
+  addons: [
+    '@storybook/addon-essentials',
+    // 'storybook-addon-angular-router',
+  ],
   framework: { name: '@storybook/angular', options: {} },
   docs: { autodocs: true },
   core: { disableTelemetry: true },

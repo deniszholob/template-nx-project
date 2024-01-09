@@ -24,4 +24,5 @@
   - On the main repo code page
   - Under About settings on the right, click the gear icon
   - For website check the "Use your GitHub Pages website"
-- Delete this file
+- Delete this file INSTRUCTIONS.md
+- Delete SETUP_DOCS.md
