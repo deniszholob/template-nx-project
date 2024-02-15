@@ -1,42 +1,46 @@
 # Set up with NX
 
+Install pnpm
+
+- `npm install -g pnpm`
+
 Generate new NX Project
 
-- `npx create-nx-workspace@latest`
+- `npx create-nx-workspace@latest -pm pnpm`
 
 Install Storybook
 
-- `npm install -D @nx/storybook`
+- `pnpm install -D @nx/storybook @storybook/types @storybook/theming @storybook/manager-api @babel/runtime`
 - `npx nx g @nx/angular:storybook-configuration template-nx-project --tsConfiguration=true`
 - `npx nx g @nx/angular:stories --project=template-nx-project`
 
 Install eslint plugins
 
-- `npm i --save-dev              eslint-plugin-simple-import-sort eslint-plugin-unused-imports prettier-plugin-organize-attributes prettier-plugin-tailwindcs eslint-plugin-storybook`
-- `npm i --save-dev --save-exact eslint-plugin-simple-import-sort eslint-plugin-unused-imports prettier-plugin-organize-attributes`
+- `pnpm i --save-dev              eslint-plugin-simple-import-sort eslint-plugin-unused-imports prettier-plugin-organize-attributes prettier-plugin-tailwindcss eslint-plugin-storybook`
+- `pnpm i --save-dev --save-exact eslint-plugin-simple-import-sort eslint-plugin-unused-imports prettier-plugin-organize-attributes`
 
 Firebase
 
-- `npm install firebase-tools --save-dev`
+- `pnpm install firebase-tools --save-dev`
 - https://firebase.google.com/docs/cli
 
 NG Service Worker
 
-- `ng add @angular/pwa --project  grocerry-list`
-- `npm i @angular/pwa && npx nx g @angular/pwa:ng-add`
-- `npm i --save-dev http-server`
+- `ng add @angular/pwa --project template-nx-project`
+- `pnpm i @angular/pwa && npx nx g @angular/pwa:ng-add`
+- `pnpm i --save-dev http-server`
 
 - https://angular.io/guide/service-worker-intro
 - https://angular.io/guide/service-worker-getting-started
 
-## npm
+## pnpm
 
 - NX
   - `npx create-nx-workspace@latest template-nx-project`
   - https://nx.dev/getting-started/installation
   - https://nx.dev/angular-standalone-tutorial/1-code-generation#angular-standalone-tutorial---part-1:-code-generation
 - Jest: Included in NX
-  - `npm install ng-mocks --save-dev`
+  - `pnpm install ng-mocks --save-dev`
 - Storybook
   - https://nx.dev/packages/storybook/documents/overview
   - https://nx.dev/packages/storybook/documents/overview-angular

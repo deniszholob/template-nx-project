@@ -72,12 +72,14 @@
     "**/jest*": true,
     "**/ngsw-config.json": true,
     "**/package-lock.json": true,
+    "**/pnpm-lock.yaml": true,
     "**/tsconfig**": true,
     "**/FUNDING.yml": true,
     "**/LICENSE": true,
     "**/NX-README.md": true,
     "**/test-setup*": true,
     "**/*.d.ts": true,
+    "**/.env": true,
     "**/debug.log": true
   },
   "cSpell.words": []
