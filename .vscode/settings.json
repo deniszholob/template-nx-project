@@ -3,7 +3,7 @@
   "angular-files-generator.generateSpec": 1,
   "angular-files-generator.generateStories": 3,
   "editor.bracketPairColorization.enabled": true,
-  "editor.codeActionsOnSave": {"source.fixAll.eslint": true},
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": "always" },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.linkedEditing": true,
