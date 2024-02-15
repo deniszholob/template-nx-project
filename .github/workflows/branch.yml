@@ -23,9 +23,14 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
 
+            - uses: pnpm/action-setup@v3
+              with:
+                  version: 8
+
             - uses: actions/setup-node@v3
               with:
                   node-version: '18.12.1'
+                  cache: 'pnpm'
 
             - name: Get npm cache directory
               id: npm-cache-dir
@@ -36,16 +41,16 @@ jobs:
               uses: actions/cache@v3
               with:
                   path: ${{steps.npm-cache-dir.outputs.dir}}
-                  key: ${{runner.os}}-node-${{hashFiles('**/package-lock.json')}}
+                  key: ${{runner.os}}-node-${{hashFiles('**/pnpm-lock.yaml')}}
                   restore-keys: |
                       ${{runner.os}}-node-
                       ${{runner.os}}-
 
             - name: Install NPM Dependencies
-              run: npm ci
+              run: pnpm run i
 
             - name: Check lint
-              run: npm run lint
+              run: pnpm run lint
 
             - name: Build
               run: sh ./.github/ci/build.sh # Generates the public folder with built angular app
