@@ -1,6 +1,6 @@
 import type { StorybookConfig } from '@storybook/angular';
 
-const storyFiles = '*.stories.@(js|jsx|ts|tsx|mdx)';
+const storyFiles = '*.@(mdx|stories.@(js|jsx|ts|tsx))';
 const config: StorybookConfig = {
   stories: [`./**/${storyFiles}`, `../src/app/**/${storyFiles}`],
   addons: [
@@ -8,10 +8,9 @@ const config: StorybookConfig = {
     // 'storybook-addon-angular-router',
   ],
   framework: { name: '@storybook/angular', options: {} },
-  docs: { autodocs: true },
   core: { disableTelemetry: true },
   staticDirs: [{ from: '../global/assets', to: '/assets' }], //👈 Configures the static asset folder in Storybook for icons, images, etc
-  env: (config) => ({ ...config, NODE_ENV: 'development' }), //👈 Solves the "DefinePluginConflicting values for 'process.env.NODE_ENV' storybook" warning
+  env: (config: any) => ({ ...config, NODE_ENV: 'development' }), //👈 Solves the "DefinePluginConflicting values for 'process.env.NODE_ENV' storybook" warning
 };
 
 export default config;

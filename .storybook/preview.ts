@@ -22,9 +22,10 @@ export const parameters: Parameters = {
     // source: { type: 'code' }, // forces the raw source code (rather than the rendered JSX).
     toc: true,
     // Sync this with the config theme manager.ts
-    theme: themes.dark,
+    // theme: themes.dark,
   },
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  // Recommended to not use this. See https://storybook.js.org/docs/8.0/essentials/actions#via-storybooktest-fn-spy-function
+  // actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     hideNoControlsWarning: true, // If component has no @Input()
     expanded: true,
@@ -47,7 +48,7 @@ const DECORATOR_PROVIDERS: SbDecoratorFn = applicationConfig({
     importProvidersFrom(
       BrowserAnimationsModule,
       HttpClientTestingModule,
-      RouterTestingModule
+      RouterTestingModule,
     ),
   ],
 });
@@ -56,7 +57,7 @@ const DECORATOR_NGXS_CLEAR_STORE: SbDecoratorFn = componentWrapperDecorator(
   (story: string): string => {
     window.localStorage.removeItem('@@STATE');
     return story;
-  }
+  },
 );
 
 // const DECORATOR_APP_WRAPPER: SbDecoratorFn = (storyFunc: any) => {
@@ -76,4 +77,5 @@ export const decorators: SbDecoratorFn[] = [
 export default {
   parameters,
   decorators,
+  tags: ['autodocs'],
 } satisfies Preview;
