@@ -1,4 +1,4 @@
-# Components "Library"
+# Components "library"
 
 Used for reusable modular UI components
 

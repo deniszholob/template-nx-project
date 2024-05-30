@@ -16,8 +16,8 @@ Install Storybook
 
 Install eslint plugins
 
-- `pnpm i --save-dev              eslint-plugin-simple-import-sort eslint-plugin-unused-imports prettier-plugin-organize-attributes prettier-plugin-tailwindcss eslint-plugin-storybook`
-- `pnpm i --save-dev --save-exact eslint-plugin-simple-import-sort eslint-plugin-unused-imports prettier-plugin-organize-attributes`
+- `pnpm i eslint-plugin-simple-import-sort eslint-plugin-unused-imports prettier-plugin-organize-attributes prettier-plugin-tailwindcss eslint-plugin-storybook --save-dev`
+- `pnpm i eslint-plugin-simple-import-sort eslint-plugin-unused-imports prettier-plugin-organize-attributes --save-dev --save-exact`
 
 Firebase
 
