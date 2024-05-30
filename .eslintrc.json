@@ -40,7 +40,9 @@
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": "warn",
         "simple-import-sort/imports": "error",
-        "@typescript-eslint/adjacent-overload-signatures": "off"
+        "@typescript-eslint/adjacent-overload-signatures": "off",
+        "@typescript-eslint/no-extra-semi": "error",
+        "no-extra-semi": "off"
       }
     },
     {
