@@ -50,7 +50,6 @@
     "**/dist/": true,
     "**/e2e": true,
     "**/node_modules": true,
-    "**/public": true,
     "**/screenshots/": true,
     "**/src/environments": true,
     "**/src/icons": true,

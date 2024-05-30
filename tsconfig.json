@@ -22,7 +22,8 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {},
+    "esModuleInterop": true
   },
   "files": [],
   "include": [],
