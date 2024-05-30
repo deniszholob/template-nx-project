@@ -7,7 +7,7 @@
   "repository": "github:deniszholob/template-nx-project",
   "private": true,
   "engines": {
-    "node": ">= 18.12.1",
+    "node": ">= 18.13.0",
     "npm": ">= 8.19.2"
   },
   "scripts": {
@@ -16,7 +16,7 @@
     "inferred-tasks": "nx show project template-nx-project --web ",
     "storybook": "nx run template-nx-project:storybook",
     "start": "nx run template-nx-project:serve --port=4200",
-    "start:prod": "pnpm run build && http-server -g -p 5555 --cors -c-1 public -o",
+    "start:prod": "pnpm run build && http-server -g -p 5555 --cors -c-1 dist/browser -o",
     "nx:clear-cache": "nx reset",
     "lint": "nx lint",
     "lint:fix": "nx lint --fix",

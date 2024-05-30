@@ -11,5 +11,5 @@ import { APP_MODIFIED_DATE } from './app.modified';
   imports: [CommonModule, RouterModule],
 })
 export class AppComponent {
-  public readonly APP_MODIFIED_DATE: number = APP_MODIFIED_DATE;
+  protected readonly APP_MODIFIED_DATE: number = APP_MODIFIED_DATE;
 }
