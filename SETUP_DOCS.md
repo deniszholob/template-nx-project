@@ -6,7 +6,7 @@ Install pnpm
 
 Generate new NX Project
 
-- `npx create-nx-workspace@latest -pm pnpm`
+- `npx create-nx-workspace@latest --pm pnpm`
 
 Install Storybook
 
