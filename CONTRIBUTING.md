@@ -9,6 +9,7 @@
 3. Clone the repository using git cli or ui like github desktop/sourcetree/gitkraken etc...
 4. Open the cloned folder using VSCode and install recommended extensions
 5. Run `npm run i` in the folder that you've just cloned to ensure you have all dependencies that are needed for development.
+6. Run `npm run start` to start the dev server for the app
 
 ## Hidden Files in VSCode
 
