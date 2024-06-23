@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files 
+ * @ref: https://tailwindcss.com/docs/adding-custom-styles
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/** The base layer is for things like reset rules or default styles applied to plain HTML elements. */
+@layer base {
+  /* Override preflight's default sans font choice to be serif (https://tailwindcss.com/docs/preflight) */
+  /* html, :host { @apply font-serif; } */
+
+  html {
+    @apply h-full scroll-smooth;
+  }
+
+  body {
+    @apply flex min-h-full flex-col;
+  }
+}
+
+/** The components layer is for class-based styles that you want to be able to override with utilities. */
+@layer components {
+  .link {
+    @apply gap-2 text-blue-500 underline hover:text-blue-600;
+  }
+}
+
+/** The utilities layer is for small, single-purpose classes that should always take precedence over any other styles. */
+@layer utilities {
+}
