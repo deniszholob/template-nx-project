@@ -8,6 +8,6 @@ describe('template-nx-project', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome template-nx-project');
+    getGreeting().contains('template_nx_project_name');
   });
 });

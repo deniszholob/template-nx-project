@@ -9,7 +9,7 @@ import {
   Parameters,
   Preview,
 } from '@storybook/angular';
-import { themes } from '@storybook/theming';
+// import { themes } from '@storybook/theming';
 import { DecoratorFunction } from '@storybook/types';
 
 export const parameters: Parameters = {
@@ -39,6 +39,7 @@ export const parameters: Parameters = {
 
 type SbDecoratorFn = DecoratorFunction<
   AngularRenderer,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Partial<{ [x: string]: any }>
 >;
 

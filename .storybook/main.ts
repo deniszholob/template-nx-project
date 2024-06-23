@@ -10,6 +10,7 @@ const config: StorybookConfig = {
   framework: { name: '@storybook/angular', options: {} },
   core: { disableTelemetry: true },
   staticDirs: [{ from: '../global/assets', to: '/assets' }], //👈 Configures the static asset folder in Storybook for icons, images, etc
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   env: (config: any) => ({ ...config, NODE_ENV: 'development' }), //👈 Solves the "DefinePluginConflicting values for 'process.env.NODE_ENV' storybook" warning
 };
 
