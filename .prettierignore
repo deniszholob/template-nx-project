@@ -5,4 +5,4 @@
 .nx/cache
 .vscode
 package-lock.json
-pnpm-lock.yml
+pnpm-lock.yaml

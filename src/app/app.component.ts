@@ -7,6 +7,7 @@ import { APP_MODIFIED_DATE } from './app.modified';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  styles: [':host{display:contents}'],
   standalone: true,
   imports: [CommonModule, RouterModule],
 })
