@@ -1,2 +1,2 @@
 export * from './app-title/app-title.service';
-export * from './formatter/formatter';
+export * from './formatter/formatter.util';

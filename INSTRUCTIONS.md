@@ -5,12 +5,15 @@
 - Replace `template-nx-project` with your project `dashed-name`
 - Replace `template_nx_project_name` with your `Project Name`
 - Replace `template_nx_project_description` with your `Project Description`
+- Replace `https://deniszholob.github.io/template-nx-project/` with your project deployment url
+- Replace `https://github.com/deniszholob/template-nx-project` with your project repository
+- Replace with your own or remove Google Analytics in [index.html](./src/index.html)
 - Replace `#ffffff` with your project theme color
 - replace `#000000` with your project bg color
 - Replace `Denis Zholob` with your name
 - replace `Denis, Zholob` with your project tags
-- Add [favicons](./src/icons/)
-- Add [meta](./src/meta/)
+- Add [favicons](./src/icons/) use https://realfavicongenerator.net/
+- Add [meta](./src/meta/) mostly modify [manifest.webmanifest](./src/meta/manifest.webmanifest)
 - Write your app
 - Add screenshot to [screenshots](./screenshots) folder and remove the .gitkeep file
 - In the repo enable workflow permissions for deploying to pages

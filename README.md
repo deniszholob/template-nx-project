@@ -16,4 +16,4 @@ If you find the cheat sheet or the source code useful, consider:
 
 # Screenshots
 
-![template_nx_project_name](screenshots/template-nx-project-screenshot.png)
+![template_nx_project_name](global/assets/screenshots/screenshot_1920x1280.png)

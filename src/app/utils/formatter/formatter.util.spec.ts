@@ -1,4 +1,4 @@
-import { toTitleCase, toWordCase } from './formatter';
+import { toTitleCase, toWordCase } from './formatter.util';
 
 describe('AppTitleService Functions', () => {
   it('should convert toTitleCase', () => {
