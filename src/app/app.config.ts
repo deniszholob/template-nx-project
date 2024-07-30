@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { provideRouter, TitleStrategy } from '@angular/router';
 
 import { appRoutes } from './app.routes';
-import { AppTitleService } from './utils';
+import { AppTitleService } from './core';
 
 export const appConfig: ApplicationConfig = {
   providers: [

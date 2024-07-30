@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Params, RouterStateSnapshot, TitleStrategy } from '@angular/router';
-
-import { toTitleCase } from '../formatter/formatter.util';
+import { toTitleCase } from 'src/app/utils';
 
 const BASE_TITLE = 'template_nx_project_name';
 const SEPARATOR = ' - ';
