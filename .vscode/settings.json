@@ -102,7 +102,6 @@
     "**/dist/": true,
     "**/e2e": true,
     "**/node_modules": true,
-    "**/screenshots/": true,
     "**/src/app/app.config.ts": true,
     "**/src/app/app.modified.ts": true,
     "**/src/environments": true,
