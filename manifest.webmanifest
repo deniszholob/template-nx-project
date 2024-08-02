@@ -21,8 +21,8 @@
       "description": "template_nx_project_description"
     },
     {
-      "src": "/assets/screenshots/screenshot_1920x1080.png",
-      "sizes": "1920x1080",
+      "src": "/assets/screenshots/screenshot_1280x720.png",
+      "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
       "label": "template_nx_project_name Desktop",
