@@ -1,8 +1,22 @@
-<header class="p-4">
-  <h1 class="text-2xl">template_nx_project_name</h1>
-  <nav class="flex flex-row flex-wrap items-center gap-x-4">
-    <a class="link" routerLink="/">Home</a>
-    <a class="link" routerLink="/dev">Dev <small> (only on localhost)</small></a>
+<header class="bg-neutral-100 dark:bg-neutral-900">
+  <h1 class="container-fixed pt-4 text-2xl">template_nx_project_name</h1>
+
+  <nav class="container-fixed flex flex-row flex-wrap items-center gap-x-4 py-4">
+    <button class="btn-primary btn-icon rounded" (click)="themeToggleService.toggleTheme()">
+      @if (!themeToggleService.isDarkMode) {
+        <div class="inline-flex">
+          <i class="fa-solid fa-sun fa-fw"></i>
+        </div>
+      } @else {
+        <div class="inline-flex">
+          <i class="fa-solid fa-moon fa-fw"></i>
+        </div>
+      }
+      <span class="sr-only">Toggle Theme</span>
+    </button>
+
+    <a class="link text-lg" routerLink="/">Home</a>
+    <a class="link text-lg" routerLink="/dev">Dev <small> (only on localhost)</small></a>
   </nav>
 </header>
 
@@ -15,9 +29,12 @@
 
 <hr />
 
-<footer class="p-4">
-  <div class="">
-    Design by <a target="_blank" rel="noopener" href="http://deniszholob.com/">Denis Zholob</a>
+<footer class="bg-neutral-100 dark:bg-neutral-900">
+  <div class="container-fixed flex-row justify-between py-4">
+    <div class="">
+      Design by
+      <a class="link" target="_blank" rel="noopener" href="http://deniszholob.com/">Denis Zholob</a>
+    </div>
+    <div>Updated {{ APP_MODIFIED_DATE | date: 'y/M/d' }}</div>
   </div>
-  <div>Updated {{ APP_MODIFIED_DATE | date: 'y/M/d' }}</div>
 </footer>
