@@ -33,3 +33,7 @@ When your work is done:
 3. Create a new Pull Request.
 4. Write a good description of the changes this pull-request will make.
 5. You must provide screenshots if there is a visual change.
+
+## Debug
+
+- If you get an error with precommit hooks (Mac/Linux), see: https://stackoverflow.com/a/72279243
