@@ -102,6 +102,9 @@ importers:
       '@schematics/angular':
         specifier: 18.2.2
         version: 18.2.2(chokidar@3.6.0)
+      '@storybook/addon-a11y':
+        specifier: ^8.2.9
+        version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@storybook/addon-essentials':
         specifier: ^8.2.9
         version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
@@ -2329,6 +2332,11 @@ packages:
   '@sinonjs/fake-timers@10.3.0':
     resolution: {integrity: sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA==}
 
+  '@storybook/addon-a11y@8.2.9':
+    resolution: {integrity: sha512-9zm0Ecn2KUUKZbRsQM5l2KcQ8RHK6a9eqdQtOMjGagrdUvUstcf7XjBmV1W6PQE2Urj93ciz1cgx4T1AYQyKtA==}
+    peerDependencies:
+      storybook: ^8.2.9
+
   '@storybook/addon-actions@8.2.9':
     resolution: {integrity: sha512-eh2teOqjga7aoClDVV+/b1gHJqsPwjiU1t+Hg/l4i2CkaBUNdYMEL90nR6fgReOdvvL5YhcPwJ8w38f9TrQcoQ==}
     peerDependencies:
@@ -3174,6 +3182,10 @@ packages:
 
   aws4@1.12.0:
     resolution: {integrity: sha512-NmWvPnx0F1SfrQbYwOi7OeaNGokp9XhzNioJ/CSBs8Qa4vxug81mhJEAVZwxXuBmYB5KDRfMq/F3RR0BIU7sWg==}
+
+  axe-core@4.10.0:
+    resolution: {integrity: sha512-Mr2ZakwQ7XUAjp7pAwQWRhhK8mQQ6JAaNWSjmjxil0R8BPioMtQsTLOolGYkji1rcL++3dCqZA3zWqpT+9Ew6g==}
+    engines: {node: '>=4'}
 
   axios@1.7.4:
     resolution: {integrity: sha512-DukmaFRnY6AzAALSH4J2M3k6PkaC+MfaAGdEERRWcC9q3/TWQwLpHR8ZRLKTdQ3aBDL64EdluRDjJqKw+BPZEw==}
@@ -11595,6 +11607,12 @@ snapshots:
     dependencies:
       '@sinonjs/commons': 3.0.1
 
+  '@storybook/addon-a11y@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))':
+    dependencies:
+      '@storybook/addon-highlight': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
+      axe-core: 4.10.0
+      storybook: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
+
   '@storybook/addon-actions@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))':
     dependencies:
       '@storybook/global': 5.0.0
@@ -12600,6 +12618,8 @@ snapshots:
   aws-sign2@0.7.0: {}
 
   aws4@1.12.0: {}
+
+  axe-core@4.10.0: {}
 
   axios@1.7.4:
     dependencies:

@@ -5,6 +5,7 @@ const config: StorybookConfig = {
   stories: [`./**/${storyFiles}`, `../src/app/**/${storyFiles}`],
   addons: [
     '@storybook/addon-essentials',
+    '@storybook/addon-a11y',
     // 'storybook-addon-angular-router',
   ],
   framework: { name: '@storybook/angular', options: {} },
