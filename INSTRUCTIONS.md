@@ -7,6 +7,7 @@ Take a look at the [tailwind branch](https://github.com/deniszholob/template-nx-
 - Change the [License](./LICENSE)
   - https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository
   - https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository
+- TOGGLE HIDDEN FILES with the `adrianwilczynski.toggle-hidden` extension
 - Replace `template-nx-project` with your project `dashed-name`
 - Replace `template_nx_project_name` with your `Project Name`
 - Replace `template_nx_project_description` with your `Project Description`
