@@ -1,0 +1,94 @@
+name: Test Workflow
+
+# Manually trigger by going to this workflow in the repository actions tab
+on: workflow_dispatch
+
+jobs:
+    setup:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - uses: pnpm/action-setup@v3
+              with:
+                  version: 8
+
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: '18.19.1'
+                  cache: 'pnpm'
+
+            - name: Get npm cache directory
+              id: npm-cache-dir
+              run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+
+            - name: Cache node modules
+              id: npm-cache
+              uses: actions/cache@v3
+              with:
+                  path: ${{steps.npm-cache-dir.outputs.dir}}
+                  key: ${{runner.os}}-node-${{hashFiles('**/pnpm-lock.yaml')}}
+                  restore-keys: |
+                      ${{runner.os}}-node-
+                      ${{runner.os}}-
+
+            - name: Install NPM Dependencies
+              run: pnpm install
+
+    lint:
+        runs-on: ubuntu-latest
+        needs: setup
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Lint code
+              run: pnpm run lint
+
+    prettier:
+        runs-on: ubuntu-latest
+        needs: setup
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Prettier Format Check
+              run: pnpm run prettier:check
+
+    jest-tests:
+        runs-on: ubuntu-latest
+        needs: setup
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Run Jest Tests
+              run: pnpm run test
+
+    storybook-tests:
+        runs-on: ubuntu-latest
+        needs: setup
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Run Storybook Tests
+              run: pnpm run storybook:test
+
+    build:
+        runs-on: ubuntu-latest
+        needs: setup
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Build
+              run: sh ./.github/ci/build.sh
+
+            - name: Archive web demo build
+              if: success()
+              uses: actions/upload-artifact@v3
+              with:
+                  name: dist
+                  path: dist/browser
