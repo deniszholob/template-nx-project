@@ -117,7 +117,7 @@
       "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "outputDir": "dist/storybook/template-nx-project",
+        "outputDir": "dist-storybook",
         "configDir": "./.storybook",
         "browserTarget": "template-nx-project:build",
         "compodoc": false
@@ -138,7 +138,7 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "template-nx-project:build-storybook",
-        "staticFilePath": "dist/storybook/template-nx-project"
+        "staticFilePath": "dist-storybook"
       },
       "configurations": {
         "ci": {

@@ -1,31 +1,47 @@
-name: Test Workflow
+# CI/CD for Github Actions
+# @author Denis Zholob (deniszholob.com)
+# Checks linting, builds app
+# ref: https://pnpm.io/continuous-integration#github-actions
+# ============================================================================ #
 
-# Manually trigger by going to this workflow in the repository actions tab
-on: workflow_dispatch
+name: Test Branch Workflow
+
+# Controls when the workflow will run
+on:
+    # Run on
+    push:
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
 
 jobs:
     setup:
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: ['18.19.1']
+                pnpm-version: [8]
         steps:
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
 
-            - uses: pnpm/action-setup@v3
+            - name: Set up pnpm ${{ matrix.pnpm-version }}
+              uses: pnpm/action-setup@v4
               with:
-                  version: 8
+                  version: ${{ matrix.pnpm-version }}
 
-            - uses: actions/setup-node@v3
+            - name: Set up Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v4
               with:
-                  node-version: '18.19.1'
+                  node-version: ${{ matrix.node-version }}
                   cache: 'pnpm'
 
             - name: Get npm cache directory
               id: npm-cache-dir
               run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
-            - name: Cache node modules
+            - name: Cache node cache directory
               id: npm-cache
-              uses: actions/cache@v3
+              uses: actions/cache@v4
               with:
                   path: ${{steps.npm-cache-dir.outputs.dir}}
                   key: ${{runner.os}}-node-${{hashFiles('**/pnpm-lock.yaml')}}
@@ -35,60 +51,273 @@ jobs:
 
             - name: Install NPM Dependencies
               run: pnpm install
+        outputs:
+            npm-cache-dir: ${{ steps.npm-cache-dir.outputs.dir }}
+            node-version: ${{ matrix.node-version }}
+            pnpm-version: ${{ matrix.pnpm-version }}
 
     lint:
         runs-on: ubuntu-latest
         needs: setup
         steps:
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
+
+            - name: Set up pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: ${{ needs.setup.outputs.pnpm-version}}
+
+            - name: Set up Node.js ${{ needs.setup.outputs.node-version}}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ needs.setup.outputs.node-version}}
+                  cache: 'pnpm'
+
+            - name: Restore node_modules cache
+              id: npm-cache
+              uses: actions/cache@v4
+              with:
+                  path: ${{ needs.setup.outputs.npm-cache-dir }}
+                  key: ${{runner.os}}-node-${{hashFiles('**/pnpm-lock.yaml')}}
+                  restore-keys: |
+                      ${{runner.os}}-node-
+                      ${{runner.os}}-
+
+            - name: Install NPM Dependencies
+              run: pnpm install
 
             - name: Lint code
-              run: pnpm run lint
+              run: pnpm run lint:check
 
-    prettier:
+    prettier-format:
         runs-on: ubuntu-latest
         needs: setup
         steps:
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
+
+            - name: Set up pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: ${{ needs.setup.outputs.pnpm-version}}
+
+            - name: Set up Node.js ${{ needs.setup.outputs.node-version}}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ needs.setup.outputs.node-version}}
+                  cache: 'pnpm'
+
+            - name: Restore node_modules cache
+              id: npm-cache
+              uses: actions/cache@v4
+              with:
+                  path: ${{ needs.setup.outputs.npm-cache-dir }}
+                  key: ${{runner.os}}-node-${{hashFiles('**/pnpm-lock.yaml')}}
+                  restore-keys: |
+                      ${{runner.os}}-node-
+                      ${{runner.os}}-
+
+            - name: Install NPM Dependencies
+              run: pnpm install
 
             - name: Prettier Format Check
-              run: pnpm run prettier:check
+              run: pnpm run format:check
 
     jest-tests:
         runs-on: ubuntu-latest
         needs: setup
         steps:
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
 
+            - name: Set up pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: ${{ needs.setup.outputs.pnpm-version}}
+
+            - name: Set up Node.js ${{ needs.setup.outputs.node-version}}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ needs.setup.outputs.node-version}}
+                  cache: 'pnpm'
+
+            - name: Restore node_modules cache
+              id: npm-cache
+              uses: actions/cache@v4
+              with:
+                  path: ${{ needs.setup.outputs.npm-cache-dir }}
+                  key: ${{runner.os}}-node-${{hashFiles('**/pnpm-lock.yaml')}}
+                  restore-keys: |
+                      ${{runner.os}}-node-
+                      ${{runner.os}}-
+
+            - name: Install NPM Dependencies
+              run: pnpm install
             - name: Run Jest Tests
               run: pnpm run test
 
-    storybook-tests:
+    storybook-build:
         runs-on: ubuntu-latest
         needs: setup
         steps:
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
+
+            - name: Set up pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: ${{ needs.setup.outputs.pnpm-version}}
+
+            - name: Set up Node.js ${{ needs.setup.outputs.node-version}}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ needs.setup.outputs.node-version}}
+                  cache: 'pnpm'
+
+            - name: Restore node_modules cache
+              id: npm-cache
+              uses: actions/cache@v4
+              with:
+                  path: ${{ needs.setup.outputs.npm-cache-dir }}
+                  key: ${{runner.os}}-node-${{hashFiles('**/pnpm-lock.yaml')}}
+                  restore-keys: |
+                      ${{runner.os}}-node-
+                      ${{runner.os}}-
+
+            - name: Install NPM Dependencies
+              run: pnpm install
 
             - name: Run Storybook Tests
-              run: pnpm run storybook:test
+              run: pnpm run storybook:build
 
+            - name: Archive SB Build
+              if: success()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: dist-storybook
+                  path: dist-storybook
+
+        outputs:
+            npm-cache-dir: ${{ needs.setup.outputs.npm-cache-dir }}
+            node-version: ${{ needs.setup.outputs.node-version }}
+            pnpm-version: ${{ needs.setup.outputs.pnpm-version }}
+
+    storybook-tests:
+        timeout-minutes: 60
+        runs-on: ubuntu-latest
+        needs: storybook-build
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Set up pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: ${{ needs.storybook-build.outputs.pnpm-version}}
+
+            - name: Set up Node.js ${{ needs.storybook-build.outputs.node-version}}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ needs.storybook-build.outputs.node-version}}
+                  cache: 'pnpm'
+
+            - name: Restore node_modules cache
+              id: npm-cache
+              uses: actions/cache@v4
+              with:
+                  path: ${{ needs.storybook-build.outputs.npm-cache-dir }}
+                  key: ${{runner.os}}-node-${{hashFiles('**/pnpm-lock.yaml')}}
+                  restore-keys: |
+                      ${{runner.os}}-node-
+                      ${{runner.os}}-
+
+            - name: Install NPM Dependencies
+              run: pnpm install
+
+            - name: Restore playwright cache
+              id: playwright-cache
+              uses: actions/cache@v4
+              with:
+                  path: /home/runner/.cache/ms-playwright
+                  key: ${{runner.os}}-playwright-${{hashFiles('**/pnpm-lock.yaml')}}
+                  restore-keys: |
+                      ${{runner.os}}-playwright-
+                      ${{runner.os}}-
+
+            - name: Install Playwright
+              run: pnpm run storybook:playwright:ci
+
+            - name: Download SB Build
+              uses: actions/download-artifact@v4
+              with:
+                  name: dist-storybook
+                  path: dist-storybook
+
+            - name: Serve Storybook and Run SB Tests
+              run: pnpm run storybook:test:ci
     build:
         runs-on: ubuntu-latest
         needs: setup
         steps:
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
+
+            - name: Set up pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: ${{ needs.setup.outputs.pnpm-version}}
+
+            - name: Set up Node.js ${{ needs.setup.outputs.node-version}}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ needs.setup.outputs.node-version}}
+                  cache: 'pnpm'
+
+            - name: Restore node_modules cache
+              id: npm-cache
+              uses: actions/cache@v4
+              with:
+                  path: ${{ needs.setup.outputs.npm-cache-dir }}
+                  key: ${{runner.os}}-node-${{hashFiles('**/pnpm-lock.yaml')}}
+                  restore-keys: |
+                      ${{runner.os}}-node-
+                      ${{runner.os}}-
+
+            - name: Install NPM Dependencies
+              run: pnpm install
 
             - name: Build
               run: sh ./.github/ci/build.sh
 
-            - name: Archive web demo build
+            - name: Archive App Build
               if: success()
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                   name: dist
                   path: dist/browser
+
+    # Ref: https://focisolutions.com/2020/04/github-actions-deploying-an-angular-app/
+    deploy-github:
+        if: github.ref == 'refs/heads/main' # Run this job only on the main branch
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Download App Build
+              uses: actions/download-artifact@v4
+              with:
+                  name: dist
+                  path: dist
+
+            - name: Display structure of downloaded files
+              run: ls -R
+              working-directory: dist
+
+            - name: Deploy to GitHub Pages
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  branch: gh-pages
+                  folder: dist
