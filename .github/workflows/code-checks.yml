@@ -4,7 +4,7 @@
 # ref: https://pnpm.io/continuous-integration#github-actions
 # ============================================================================ #
 
-name: Test Branch Workflow
+name: Code Checks
 
 # Controls when the workflow will run
 on:
@@ -188,7 +188,7 @@ jobs:
             - name: Install NPM Dependencies
               run: pnpm install
 
-            - name: Run Storybook Tests
+            - name: Run Storybook Build
               run: pnpm run storybook:build
 
             - name: Archive SB Build
