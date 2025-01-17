@@ -3,6 +3,7 @@
 # @author Denis Zholob (deniszholob.com)
 #
 # ====================================== #
+set -e  # Exit immediately if a command exits with a non-zero status
 
 echo ' -- Build Script Started ...'
 

@@ -50,7 +50,7 @@ describe('AppTitleService', () => {
     } as unknown as RouterStateSnapshot;
     service.updateTitle(snapshot);
     expect(title.getTitle()).toStrictEqual(
-      'template_nx_project_name - Search: "bob"'
+      'template_nx_project_name - Search: "bob"',
     );
   });
 });
