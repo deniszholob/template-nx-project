@@ -101,7 +101,6 @@
     "**/coverage/": true,
     "**/dist/": true,
     "**/dist-storybook/": true,
-    "**/e2e": true,
     "**/node_modules": true,
     "**/src/app/app.config.ts": true,
     "**/src/app/app.modified.ts": true,
