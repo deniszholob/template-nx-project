@@ -45,6 +45,7 @@
     "upgrade:nx:apply": "nx migrate --run-migrations",
     "upgrade:storybook": "npx storybook@latest upgrade --config-dir ./.storybook",
     "upgrade:storybook-auto": "npx storybook@latest automigrate --config-dir ./.storybook",
+    "cypress:ci": "cypress install",
     "storybook:build": "nx run template-nx-project:build-storybook",
     "storybook:playwright:ci": "pnpx playwright install --with-deps chromium",
     "storybook:test:ci": "pnpx concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"pnpx http-server dist-storybook --port 6006\" \"pnpx wait-on tcp:127.0.0.1:6006 && test-storybook\"",
