@@ -2,7 +2,7 @@
 
 template_nx_project_description
 
-## Deployments [![Build Status](https://github.com/deniszholob/template-nx-project/actions/workflows/main.yml/badge.svg)](https://github.com/deniszholob/template-nx-project/actions/workflows/main.yml)
+## Deployments [![Build Status](https://github.com/deniszholob/template-nx-project/actions/workflows/code-checks.yml/badge.svg)](https://github.com/deniszholob/template-nx-project/actions/workflows/code-checks.yml)
 
 - Master branch is for the source code that's hosted on
   [GhPages](https://deniszholob.github.io/template-nx-project/)
