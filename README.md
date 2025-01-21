@@ -9,7 +9,7 @@ template_nx_project_description
 
 # Support Me
 
-If you find the cheat sheet or the source code useful, consider:
+If you find the app or the source code useful, consider:
 
 - Donating Ko-fi: https://ko-fi.com/deniszholob
 - Supporting on Patreon: https://www.patreon.com/deniszholob

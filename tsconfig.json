@@ -14,8 +14,8 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "useDefineForClassFields": false,
-    "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -44,11 +44,12 @@
   "compileOnSave": false,
   "exclude": ["node_modules", "tmp"],
   "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictStandalone": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "fullTemplateTypeCheck": true,
+    "enableI18nLegacyMessageIdFormat": false
+    // "strictInjectionParameters": true, // in strictTemplates
+    // "strictInputAccessModifiers": true, // in strictTemplates
+    // "strictStandalone": true, // in strictTemplates
   },
   "ts-node": {
     "compilerOptions": {
